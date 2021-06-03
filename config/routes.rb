@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   }
   root 'user/homes#top'
   scope module: 'user' do
-  resources :posts, only:[:new, :show, :index, :create, :destroy]
+  resources :posts, only:[:new, :show, :index, :create, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+   resources :comments, only:[:create, :destroy]
+  end
   end
 
 
