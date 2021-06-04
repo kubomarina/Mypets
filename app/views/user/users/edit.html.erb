@@ -1,0 +1,27 @@
+<h4>プロフィール編集</h4>
+<%= form_with model:@user, local:true do |f| %>
+<table>
+ <tr>
+  <th>プロフィール画像</th>
+  <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+  <td><%= f.attachment_field :profile_image %></td>
+ </tr>
+ <tr>
+  <th>飼い主さん</th>
+  <td><%= f.text_field :owner_name, autofocus: true, placeholder:"飼い主さんのお名前" %></td>
+  <td></td>
+ </tr>
+ <tr>
+  <th>ペットの種類</th>
+  <td><%= f.text_field :pet_kind, autofocus: true %></td>
+  <td></td>
+ </tr>
+ <tr>
+  <th>自己紹介</th>
+  <td><%= f.text_area :introduction, autofocus: true %></td>
+  <td></td>
+ </tr>
+</table>
+
+<%= f.submit "変更を保存" %>
+<% end %>

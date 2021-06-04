@@ -1,0 +1,38 @@
+<h4>マイページ</h4>
+ <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+<table>
+ <tr>
+  <th>飼い主さん</th>
+  <td><%= @user.owner_name %></td>
+ </tr>
+ <tr>
+  <th>ペットの種類</th>
+  <td><%= @user.pet_kind %></td>
+ </tr>
+  <th>自己紹介</th>
+  <td><%= @user.introduction %></td>
+ </tr>
+</table>
+<% if @user.id == current_user.id %>
+<button>
+ <%= link_to edit_user_path(@user) do %>
+ <i>プロフィール編集</i>
+ <% end %>
+</button>
+<% end %>
+
+<table>
+<% @posts.each do |post| %>
+ <tr>
+  <th></th>
+  <th>タイトル</th>
+  <th>ひとこと</th>
+ </tr>
+ <tr>
+  <td><%= attachment_image_tag post, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+  <td><%= post.title %></td>
+  <td><%= post.body %></td>
+ </tr>
+ <% end %>
+</table>
+<%= paginate @posts %>

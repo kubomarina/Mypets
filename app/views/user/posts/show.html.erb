@@ -4,7 +4,11 @@
 <%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 <%= @post.body %>
 
-<h5><%= @post.user.owner_name %></h5>
+<h5>
+ <%= link_to user_path(@post.user) do %>
+ <%= @post.user.owner_name %>
+ <% end %>
+</h5>
 <h6><%= @post.created_at.strftime('%Y/%m/%d') %></h6>
 
 <div>

@@ -5,6 +5,9 @@
     <tr>
      <th>タイトル</th>
      <th>ユーザー名</th>
+     <th>コメント</th>
+     <th>いいね</th>
+
     </tr>
     <% @posts.each do |post| %>
     <tr>
@@ -14,10 +17,11 @@
       <% end %>
      </td>
      <td><%= post.user.owner_name %></td>
-     <% if post.user == current_user %>
-     <td><%= link_to "削除", post_path(post), method: :delete %></td>
      <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
-     <td><%= "★#{post.favorites.count}" %>
+     <td>
+      <%= "★#{post.favorites.count}" %>
+      <% if post.user == current_user %>
+     <td><%= link_to "削除", post_path(post), method: :delete %></td>
      <% end %>
     <% end %>
    </table>
