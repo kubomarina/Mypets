@@ -1,0 +1,50 @@
+<h4>みんなのペット図鑑</h4>
+<h5>詳細ページ</h5>
+
+<table>
+ <tr>
+  <th><%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+ </tr>
+ <tr>
+  <td><%= @pet.Animal_name %></td>
+ </tr>
+ <tr>
+  <th>どんな動物？</th>
+ </tr>
+ <tr>
+  <td><%= @pet.introduction %></td>
+ </tr>
+ <tr>
+  <th>主食・おやつ</th>
+ </tr>
+ <tr>
+  <td><%= @pet.food %></td>
+ </tr>
+ <tr>
+  <th>習性・すきなこと</th>
+ </tr>
+ <tr>
+  <td><%= @pet.hobby %></td>
+ </tr>
+ <tr>
+  <th>飼育上大変なこと</th>
+ </tr>
+ <tr>
+  <td><%= @pet.caution %></td>
+ </tr>
+ <tr>
+  <th>おすすめの飼育道具</th>
+ </tr>
+ <tr>
+  <td><%= @pet.tool %></td>
+ </tr>
+ </table>
+ <button>
+ <%= link_to edit_pet_path(@pet) do %>
+ <i>編集</i>
+ <% end %>
+ </button>
+
+
+
+

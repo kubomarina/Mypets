@@ -1,0 +1,26 @@
+<h4>みんなのペット図鑑</h4>
+<%= link_to "ペットを新しく追加", new_pet_path %>
+<h5>投稿一覧</h5>
+<table>
+ <tr>
+  <th></th>
+  <th>ペットの種類</th>
+  <th>最終更新日時</th>
+  <th></th>
+ </tr>
+ <% @pets.each do |pets| %>
+ <tr>
+  <td><%= attachment_image_tag pets, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+  <td>
+   <%= link_to pet_path(pets) do %>
+   <%= pets.Animal_name %>
+   <% end %>
+  </td>
+  <td><%= pets.updated_at.strftime('%Y/%m/%d') %></td>
+  <td></td>
+ </tr>
+ <% end %>
+</table>
+
+
+
