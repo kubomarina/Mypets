@@ -5,6 +5,7 @@
     <tr>
      <th>タイトル</th>
      <th>ユーザー名</th>
+     <th>タグ</th>
      <th>コメント</th>
      <th>いいね</th>
 
@@ -17,6 +18,7 @@
       <% end %>
      </td>
      <td><%= post.user.owner_name %></td>
+     <td><%= post.tag_list %></td>
      <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
      <td>
       <%= "★#{post.favorites.count}" %>

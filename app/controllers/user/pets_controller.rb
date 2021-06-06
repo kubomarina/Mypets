@@ -9,7 +9,7 @@ class User::PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.page(params[:page]).reverse_order
+    @pets = Pet.all
   end
 
   def edit
@@ -27,6 +27,12 @@ class User::PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(pet_params)
     redirect_to pet_path(@pet.id)
+  end
+
+  def search
+    @pets = Pet.search(params[:keyword])
+    @keyword = params[:keyword]
+    redirect_to  pets_path
   end
 
   private

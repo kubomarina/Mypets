@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   }
   get "admin" => 'admin/homes#top'
   get "about" => "admin/homes#about"
-
+  namespace :admin do
+  resources :users, only:[:index, :show]
+  resources :posts, only:[:index, :show, :destroy]do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only:[:create, :destroy]
+  end
+  resources :pets, only:[:index, :show, :destroy]
+  end
   devise_for :users, controllers:{
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -15,8 +22,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
    resources :comments, only:[:create, :destroy]
   end
-  resources :users, only:[:show, :update, :edit]
-  resources :pets, only:[:new, :show, :index, :create, :update, :edit]
+  resources :users, only:[:show, :update, :edit, :index]
+  resources :pets, only:[:new, :show, :index, :create, :update, :edit] do
+  get 'search' => 'pets#search'
+  end
   end
 
 

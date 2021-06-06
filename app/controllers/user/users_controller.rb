@@ -3,6 +3,10 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).reverse_order
   end
+  
+  def index 
+    @users = User.page(params[:page]).reverse_order
+  end
 
   def edit
    @user = User.find(params[:id])
