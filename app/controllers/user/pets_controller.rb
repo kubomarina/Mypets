@@ -30,10 +30,14 @@ class User::PetsController < ApplicationController
   end
 
   def search
-    @pets = Pet.search(params[:keyword])
-    @keyword = params[:keyword]
-    redirect_to  pets_path
+    if params[:keyword].present?
+      @pets = Pet.where('Animal_name LIKE ?',"%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @pets = Pet.all
+    end
   end
+
 
   private
 

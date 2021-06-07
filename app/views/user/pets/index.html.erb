@@ -1,5 +1,10 @@
 <h4>みんなのペット図鑑</h4>
 
+<%= form_with url: search_pets_path, local: true, method: :get do |form| %>
+    <%= form.text_field :keyword %>
+    <%= form.submit "検索" %>
+  <% end %>
+
 <%= link_to "ペットを新しく追加", new_pet_path %>
 <h5>投稿一覧</h5>
 <table>

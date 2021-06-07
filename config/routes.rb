@@ -17,7 +17,11 @@ end
       get 'search'
   end
   end
-  resources :pets, only:[:index, :show, :destroy]
+  resources :pets, only:[:index, :show, :destroy] do
+   collection do
+      get 'search'
+  end
+end
   end
   
   devise_for :users, controllers:{
@@ -38,6 +42,10 @@ end
       get 'search'
   end
 end
-  resources :pets, only:[:new, :show, :index, :create, :update, :edit]
+  resources :pets, only:[:new, :show, :index, :create, :update, :edit] do
+   collection do
+      get 'search'
+  end
+end
 end
 end
