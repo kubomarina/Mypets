@@ -3,8 +3,8 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).reverse_order
   end
-  
-  def index 
+
+  def index
     @users = User.page(params[:page]).reverse_order
   end
 
@@ -16,6 +16,15 @@ class User::UsersController < ApplicationController
    @user = User.find(params[:id])
    @user.update(user_params)
    redirect_to user_path(@user.id)
+  end
+
+   def search
+    if params[:keyword].present?
+      @users = User.where('owner_name LIKE ?',"%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @users = User.all
+    end
   end
 
   private

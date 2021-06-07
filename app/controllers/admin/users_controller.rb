@@ -8,6 +8,15 @@ class Admin::UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).reverse_order
   end
 
+  def search
+    if params[:keyword].present?
+      @users = User.where(['owner_name LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @users = Usere.all
+    end
+  end
+
   layout 'admin'
 
   private

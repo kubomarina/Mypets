@@ -8,10 +8,6 @@ class User::PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.save
     redirect_to root_path
-    tag_list = params[:tag_name].split(",")
-    if @post.save
-      @post.save_posts(tag_list)
-    end
   end
 
   def show
@@ -24,7 +20,15 @@ class User::PostsController < ApplicationController
     @post.destroy
     redirect_to root_path
   end
-  
+
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
+  end
 
   private
 

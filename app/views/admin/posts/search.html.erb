@@ -1,0 +1,10 @@
+<h2>検索結果 "<%= @keyword %>"</h2>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to post_path(post.id) do %>
+          <%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg"%>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
