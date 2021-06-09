@@ -1,16 +1,13 @@
+<h4>検索結果<h4>
 <table>
-     <tr>
-      <th></th>
-      <th>ユーザ</th>
-     </tr>
-      <% @pets.each do |pet| %>
-     <tr>
-      <td>
-        <%= link_to pet_path(pet.id) do %>
-        <%= attachment_image_tag pet, :pet_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
-        <% end %>
-      <td>
-      <td><%= pet.Animal_name %></td>
-     </tr>
-    <% end %>
-   </table>
+　<% @pets.each do |pet| %>
+   <tr>
+    <td>
+     <%= link_to pet_path(pet.id) do %>
+     <%= attachment_image_tag pet, :pet_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
+     <% end %>
+    <td>
+    <td><%= pet.Animal_name %></td>
+   </tr>
+  <% end %>
+</table>

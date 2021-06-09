@@ -8,5 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :pets, dependent: :destroy
+   has_many :favorited_posts, through: :favorites, source: :user
   attachment :profile_image
+  
 end

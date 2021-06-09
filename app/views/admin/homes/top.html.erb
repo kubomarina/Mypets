@@ -2,12 +2,21 @@
 <div class="container">
  <div class="row">
   <h3>みんなの投稿</h3>
-  
-  
+  <div>
+  <h4>タグ一覧</h4>
+  <% @tag_lists.each do |list| %>
+  <%= link_to search_posts_path(tag_id: list.id) do %>
+  <%= list.tag_name %>
+  <%= "(#{list.posts.count})" %>
+  <% end %>
+  <% end %>
+  </div>
+
    <table class="table table-hover table-inverse table-sm">
     <tr>
      <th>タイトル</th>
      <th>ユーザー名</th>
+     <th></th>
      <th>コメント</th>
      <th>いいね</th>
 
@@ -19,11 +28,16 @@
       <%= post.title %>
       <% end %>
      </td>
+     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
      <td><%= post.user.owner_name %></td>
      <td><%= link_to "コメント#{post.comments.count}件", admin_post_path(post.id) %></td>
      <td>
       <%= "★#{post.favorites.count}" %>
-     <td><%= link_to "削除", post_path(post), method: :delete %></td>
+     <td>
+      <%= link_to post_path(post), method: :delete do %>
+      <button class="btn btn-danger">削除</button>
+      <% end %>
+     </td>
     <% end %>
    </table>
   </div>

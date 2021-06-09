@@ -1,0 +1,31 @@
+<table class="table table-hover table-inverse table-sm">
+    <tr>
+     <th>タイトル</th>
+     <th>画像</th>
+     <th>ユーザー名</th>
+     <th>タグ</th>
+     <th>コメント</th>
+     <th>いいね</th>
+     <th></th>
+    </tr>
+    <% @posts.each do |post| %>
+    <tr>
+     <td>
+      <%= link_to post_path(post) do %>
+      <%= post.title %>
+      <% end %>
+     </td>
+     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
+     <td><%= post.user.owner_name %></td>
+     <td></td>
+     <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
+     <td>
+      <%= "★#{post.favorites.count}" %>
+      <% if post.user == current_user %>
+     <td><%= link_to "削除", post_path(post), method: :delete %></td>
+     <% end %>
+    <% end %>
+   </table>
+  </div>
+ </div>
+

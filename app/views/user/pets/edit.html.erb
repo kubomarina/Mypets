@@ -4,23 +4,31 @@
 
 <%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, fallback: "no_image.jpg" %>
 <%= f.attachment_field :pet_image %>
-
-<label for="inputIntroduction">Name</label>
-  <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
-
-<label for="inputFood">主食・おやつ</label>
-<%= f.text_field :food, autofocus: true, id:"inputFood" %>
-
-<label for="inputHobby">習性・すきなこと</label>
-  <%= f.text_field :hobby, autofocus: true, id:"inputHobby" %>
-
-<label for="inputTool">おすすめの飼育用品</label>
-<%= f.text_field :tool, autofocus: true, id:"inputTool" %>
-
-<label for="inputCaution">飼育で大変なこと</label>
-<%= f.text_field :caution, autofocus: true, id:"inputCaution"  %>
+<table>
+ <tr>
+  <th>ペットの種類</th>
+  <td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td>
+ </tr>
+ <tr>
+  <th>主食・おやつ</th>
+  <td><%= f.text_field :food, autofocus: true, id:"inputFood" %></td>
+ </tr>
+ <tr>
+  <th>習性・すきなこと</th>
+  <td><%= f.text_area :hobby, autofocus: true, id:"inputHobby" %></td>
+ </tr>
+ <tr>
+  <th>おすすめの飼育用品</th>
+  <td><%= f.text_field :tool, autofocus: true, id:"inputTool" %></td>
+ </tr>
+ <tr>
+  <th>飼育で大変なこと</th>
+  <td><%= f.text_area :caution, autofocus: true, id:"inputCaution"  %></td>
+ </tr>
+<table>
 
 <%= f.submit "編集を保存" %>
-
 <% end %>
+
+
 

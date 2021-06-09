@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @users = User.where(['owner_name LIKE ?', "%#{params[:keyword]}%")
+      @users = User.where('owner_name LIKE ?',"%#{params[:keyword]}%")
       @keyword = params[:keyword]
     else
       @users = Usere.all

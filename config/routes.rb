@@ -23,16 +23,18 @@ end
   end
 end
   end
-  
+
   devise_for :users, controllers:{
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  get 'ranking' => "user/posts#ranking"
   root 'user/homes#top'
   scope module: 'user' do
-  resources :posts, only:[:new, :show, :index, :create, :destroy] do
+  resources :posts, only:[:new, :show, :create, :destroy] do
     resource :favorites, only: [:create, :destroy]
    resources :comments, only:[:create, :destroy]
+   resources :tags
    collection do
       get 'search'
   end

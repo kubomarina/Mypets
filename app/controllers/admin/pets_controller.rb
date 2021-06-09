@@ -12,10 +12,10 @@ class Admin::PetsController < ApplicationController
     @pet.destroy
     redirect_to admin_pets_path
   end
-  
+
   def search
     if params[:keyword].present?
-      @pets = Pet.where('Anumal_name LIKE ?',"%#{params[:keyword]}%")
+      @pets = Pet.where('Animal_name LIKE ?',"%#{params[:keyword]}%")
       @keyword = params[:keyword]
     else
       @pets = Pet.all

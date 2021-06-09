@@ -1,10 +1,28 @@
- <h2>検索結果 "<%= @keyword %>"</h2>
+ <h2> タグ："<%= @tag.tag_name %>"</h2>
   <ul>
-    <% @posts.each do |post| %>
+    <% @tag_lists.each do |list| %>
       <li>
-        <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg"%>
-        <% end %>
+        <%#= link_to post_tags_path(post_tag_id: list.id) do %>
+          <%= list.tag_name %>
+        <%# end %>
       </li>
     <% end %>
   </ul>
+
+  <h4>タグが<%= @tag.tag_name %>の投稿一覧</h4>
+  <table>
+   <tr>
+    <th>タイトル</th>
+    <th></th>
+   </tr>
+   <% @posts.each do |post| %>
+   <tr>
+    <td>
+     <%= link_to post_path(post.id) do %>
+     <%= post.title %>
+     <% end %>
+    </td>
+    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+   </tr>
+  </table>
+  <% end %>

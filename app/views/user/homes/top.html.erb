@@ -4,18 +4,27 @@
 
   <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
     <%= form.text_field :keyword %>
-    <%= form.submit "検索" %>
+    <%=form.submit "検索" %>
   <% end %>
+  <div>
+  <h4>タグ一覧</h4>
+  <% @tag_lists.each do |list| %>
+  <%= link_to search_posts_path(tag_id: list.id) do %>
+  <%= list.tag_name %>
+  <%= "(#{list.posts.count})" %>
+  <% end %>
+  <% end %>
+  </div>
 
    <table class="table table-hover table-inverse table-sm">
     <tr>
      <th>タイトル</th>
      <th>画像</th>
      <th>ユーザー名</th>
+     <th>タグ</th>
      <th>コメント</th>
      <th>いいね</th>
      <th></th>
-
     </tr>
     <% @posts.each do |post| %>
     <tr>
@@ -26,6 +35,7 @@
      </td>
      <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
      <td><%= post.user.owner_name %></td>
+     <td></td>
      <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
      <td>
       <%= "★#{post.favorites.count}" %>
