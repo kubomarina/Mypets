@@ -1,5 +1,15 @@
 <h2>ログイン</h2>
 
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
@@ -16,5 +26,7 @@
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
+
+<h4>未登録の方は<%= link_to "こちら", new_user_registration_path %>から新規登録</h4>
 
 

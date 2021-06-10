@@ -5,5 +5,8 @@ class User::HomesController < ApplicationController
      @posts = @posts.where('title LIKE ?', "%#{params[:search]}%")if params[:search].present?
      @page = 10
   end
+  
+  def about
+  end
 
 end

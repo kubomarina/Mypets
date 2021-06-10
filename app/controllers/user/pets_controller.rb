@@ -1,4 +1,5 @@
 class User::PetsController < ApplicationController
+  before_action :authenticate_user!, except: [:edit, :new]
 
   def new
     @pet = Pet.new

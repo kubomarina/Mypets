@@ -1,4 +1,6 @@
 class User::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :new, :ranking]
+  
   def new
     @post = Post.new
   end

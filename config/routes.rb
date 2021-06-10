@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
   get "admin" => 'admin/homes#top'
-  get "about" => "admin/homes#about"
   namespace :admin do
   resources :users, only:[:index, :show] do
     collection do
@@ -29,6 +28,7 @@ end
     sessions: 'users/sessions'
   }
   get 'ranking' => "user/posts#ranking"
+  get "about" => "user/homes#about"
   root 'user/homes#top'
   scope module: 'user' do
   resources :posts, only:[:new, :show, :create, :destroy] do
