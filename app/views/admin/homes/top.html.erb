@@ -1,15 +1,16 @@
 <h4>投稿一覧</h4>
 <div class="container">
  <div class="row">
-  <h3>みんなの投稿</h3>
-  <div>
-  <h4>タグ一覧</h4>
-  <% @tag_lists.each do |list| %>
-  <%= link_to search_posts_path(tag_id: list.id) do %>
-  <%= list.tag_name %>
-  <%= "(#{list.posts.count})" %>
-  <% end %>
-  <% end %>
+  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+   <h3>みんなの投稿</h3>
+   <div>
+   <h4>タグ一覧</h4>
+   <% @tag_lists.each do |list| %>
+   <%= link_to search_posts_path(tag_id: list.id) do %>
+   <%= list.tag_name %>
+   <%= "(#{list.posts.count})" %>
+   <% end %>
+   <% end %>
   </div>
 
    <table class="table table-hover table-inverse table-sm">
@@ -34,7 +35,7 @@
      <td>
       <%= "★#{post.favorites.count}" %>
      <td>
-      <%= link_to post_path(post), method: :delete do %>
+      <%= link_to admin_post_path(post), method: :delete do %>
       <button class="btn btn-danger">削除</button>
       <% end %>
      </td>
@@ -42,5 +43,6 @@
    </table>
   </div>
  </div>
+</div>
 
  <%= paginate @posts %>

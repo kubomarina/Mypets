@@ -1,6 +1,6 @@
 class User::PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :new, :ranking]
-  
+  before_action :authenticate_user!
+
   def new
     @post = Post.new
   end
@@ -24,10 +24,14 @@ end
   end
 
   def destroy
+    if @post.user == current_user
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
+  else
+    redirect_to root_path
   end
+end
 
   def search
     @tag_lists = Tag.all

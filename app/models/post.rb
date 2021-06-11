@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  validates :title, :image, presence: true
+
   has_one_attached :video
   
   attachment :image

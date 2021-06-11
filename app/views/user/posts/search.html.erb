@@ -1,20 +1,24 @@
- <h2> タグ："<%= @tag.tag_name %>"</h2>
-  <ul>
+ <div class= "continer mx-auto">
+  <div class="row">
+  <div class="col-3">
+    <ul>
     <% @tag_lists.each do |list| %>
       <li>
-        <%#= link_to post_tags_path(post_tag_id: list.id) do %>
+        <%= link_to search_posts_path(tag_id: list.id) do %>
           <%= list.tag_name %>
-        <%# end %>
+        <% end %>
       </li>
     <% end %>
-  </ul>
+    </ul>
+   </div>
 
+ <div class="col-9">
   <h4>タグが<%= @tag.tag_name %>の投稿一覧</h4>
-  <table>
-   <tr>
-    <th>タイトル</th>
-    <th></th>
-   </tr>
+   <table>
+    <tr>
+     <th>タイトル</th>
+     <th></th>
+    </tr>
    <% @posts.each do |post| %>
    <tr>
     <td>
@@ -26,3 +30,6 @@
    </tr>
   </table>
   <% end %>
+  </div>
+  </div>
+  </div>

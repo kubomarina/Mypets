@@ -35,7 +35,7 @@
      </td>
      <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
      <td><%= post.user.owner_name %></td>
-     <td></td>
+     <td><%#= post.tag.tag_name %></td>
      <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
      <td>
       <%= "★#{post.favorites.count}" %>

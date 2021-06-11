@@ -1,4 +1,6 @@
 class Admin::PetsController < ApplicationController
+  before_action :pets
+  
   def index
     @pets = Pet.all
   end

@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  before_action :posts
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
