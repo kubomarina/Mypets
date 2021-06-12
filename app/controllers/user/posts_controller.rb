@@ -24,13 +24,9 @@ end
   end
 
   def destroy
-    if @post.user == current_user
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
-  else
-    redirect_to root_path
-  end
 end
 
   def search

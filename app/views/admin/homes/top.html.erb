@@ -1,7 +1,5 @@
-<h4>投稿一覧</h4>
 <div class="container">
- <div class="row">
-  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
    <h3>みんなの投稿</h3>
    <div>
    <h4>タグ一覧</h4>
@@ -12,15 +10,13 @@
    <% end %>
    <% end %>
   </div>
-
+<h4>投稿一覧</h4>
    <table class="table table-hover table-inverse table-sm">
     <tr>
      <th>タイトル</th>
      <th>ユーザー名</th>
-     <th></th>
      <th>コメント</th>
      <th>いいね</th>
-
     </tr>
     <% @posts.each do |post| %>
     <tr>
@@ -29,20 +25,29 @@
       <%= post.title %>
       <% end %>
      </td>
-     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
-     <td><%= post.user.owner_name %></td>
+     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg' %>
+      <% if post.video.attached? %>
+       <video src="<%= rails_blob_path(post.video) %>"width="70" height="70"type="video/mp4" controls></video>
+      <% end %>
+      </td>
+     <td>
+      <%= post.user.owner_name %>
+      <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size: '70x70' %>
+     </td>
      <td><%= link_to "コメント#{post.comments.count}件", admin_post_path(post.id) %></td>
      <td>
       <%= "★#{post.favorites.count}" %>
+     </td>
+
      <td>
       <%= link_to admin_post_path(post), method: :delete do %>
       <button class="btn btn-danger">削除</button>
       <% end %>
      </td>
+
     <% end %>
    </table>
   </div>
  </div>
-</div>
 
  <%= paginate @posts %>

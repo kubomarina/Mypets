@@ -20,7 +20,7 @@
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-
+!/storage/V5/oo/V5oo8t1fgrrY7y8timoG2oe4
 /node_modules
 /yarn-error.log
 

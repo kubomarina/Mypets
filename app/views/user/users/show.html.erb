@@ -1,12 +1,17 @@
+<div class ="container">
+ <div class="row">
+ <div class="col-md-4">
 <h4>マイページ</h4>
- <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-<table>
+<table class="table table-hover table-inverse">
  <tr>
   <th>飼い主さん</th>
-  <td><%= @user.owner_name %></td>
+  <td>
+   <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
+    <%= @user.owner_name %>
+  </td>
  </tr>
  <tr>
-  <th>ペットの種類</th>
+  <th>ペット</th>
   <td><%= @user.pet_kind %></td>
  </tr>
   <th>自己紹介</th>
@@ -14,14 +19,16 @@
  </tr>
 </table>
 <% if @user.id == current_user.id %>
-<button>
- <%= link_to edit_user_path(@user) do %>
+<button class="btn btn-outline-primary">
+ <%= link_to edit_user_path(@user.id) do %>
  <i>プロフィール編集</i>
  <% end %>
 </button>
 <% end %>
+</div>
 
-<table>
+<div class="col-md-7 offset-md-1">
+<table class="table table-hover table-inverse">
  <tr>
   <th></th>
   <th>タイトル</th>
@@ -29,7 +36,12 @@
  </tr>
  <% @posts.each do |post| %>
  <tr>
-  <td><%= attachment_image_tag post, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+  <td>
+   <%= attachment_image_tag post, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+   <% if post.video.attached? %>
+   <video src="<%= rails_blob_path(post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+   <% end %>
+  </td>
   <td>
    <%= link_to post_path(post) do %>
    <%= post.title %>
@@ -39,4 +51,7 @@
  </tr>
  <% end %>
 </table>
+</div>
+</div>
+</div>
 <%= paginate @posts %>

@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  before_action :posts
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
@@ -10,7 +10,7 @@ class Admin::PostsController < ApplicationController
     @post.destroy
     redirect_to admin_path
   end
-  
+
   def search
     if params[:keyword].present?
       @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")

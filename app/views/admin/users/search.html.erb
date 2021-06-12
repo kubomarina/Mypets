@@ -1,5 +1,9 @@
+ <div class= "continer">
+  <div class="row">
+   <div class="col-4 mx-auto">
+
 <h2>検索結果 "<%= @keyword %>"</h2>
- <table>
+ <table class="table table-hover table-inverse">
      <tr>
       <th></th>
       <th>ユーザ</th>
@@ -7,7 +11,7 @@
       <% @users.each do |user| %>
      <tr>
       <td>
-        <%= link_to user_path(user.id) do %>
+        <%= link_to admin_user_path(user.id) do %>
         <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
         <% end %>
       <td>
@@ -15,3 +19,6 @@
      </tr>
     <% end %>
    </table>
+   </div>
+   </div>
+   </div>

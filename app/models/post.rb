@@ -1,8 +1,7 @@
 class Post < ApplicationRecord
-  validates :title, :image, presence: true
-
+#  validates :title, :image, presence: true
   has_one_attached :video
-  
+
   attachment :image
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -26,7 +25,7 @@ class Post < ApplicationRecord
    old_tags.each do |old_name|
      self.tags.delete Tag.find_by(tag_name:old_name)
    end
-   
+
    new_tags.each do |new_name|
      post_tag = Tag.find_or_create_by(tag_name:new_name)
      self.tags << post_tag

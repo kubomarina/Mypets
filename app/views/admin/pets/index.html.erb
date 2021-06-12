@@ -1,11 +1,14 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h4>みんなのペット図鑑</h4>
 <%= form_with url: search_admin_pets_path, local: true, method: :get do |form| %>
     <%= form.text_field :keyword %>
-    <%= form.submit "検索" %>
+     <button class="btn btn-secondary", type="submit">検索</button>
   <% end %>
 
 <h5>投稿一覧</h5>
-<table>
+<table class="table table-hover table-inverse table-sm">
  <tr>
   <th></th>
   <th>ペットの種類</th>
@@ -31,3 +34,6 @@
  </tr>
  <% end %>
 </table>
+</div>
+</div>
+</div>

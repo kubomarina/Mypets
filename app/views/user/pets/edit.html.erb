@@ -1,34 +1,36 @@
-<h4>みんなのペット図鑑</h4>
-<h5>編集ページ</h5>
-<%= form_with model:@pet, local:true do |f| %>
+ <div class= "continer">
+  <div class="col-6 mx-auto">
 
-<%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+<h4>みんなのペット図鑑</h4>
+<%= form_with model:@pet, local:true do |f| %>
+<%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
 <%= f.attachment_field :pet_image %>
-<table>
+<table class="table table-hover table-inverse">
  <tr>
   <th>ペットの種類</th>
-  <td><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></td>
+  <td><%= f.text_field :introduction, class:"w-100", autofocus: true, id:"inputIntroduction" %></td>
  </tr>
  <tr>
   <th>主食・おやつ</th>
-  <td><%= f.text_field :food, autofocus: true, id:"inputFood" %></td>
+  <td><%= f.text_field :food, class:"w-100",  autofocus: true, id:"inputFood" %></td>
  </tr>
  <tr>
   <th>習性・すきなこと</th>
-  <td><%= f.text_area :hobby, autofocus: true, id:"inputHobby" %></td>
+  <td><%= f.text_area :hobby, class:"w-100",  autofocus: true, id:"inputHobby" %></td>
  </tr>
  <tr>
   <th>おすすめの飼育用品</th>
-  <td><%= f.text_field :tool, autofocus: true, id:"inputTool" %></td>
+  <td><%= f.text_field :tool, class:"w-100",  autofocus: true, id:"inputTool" %></td>
  </tr>
  <tr>
   <th>飼育で大変なこと</th>
-  <td><%= f.text_area :caution, autofocus: true, id:"inputCaution"  %></td>
+  <td><%= f.text_area :caution, class:"w-100",  autofocus: true, id:"inputCaution"  %></td>
  </tr>
 <table>
 
-<%= f.submit "編集を保存" %>
+<button class="btn btn-outline-success", tape="submit">変更を保存する</button>
 <% end %>
 
-
+</div>
+</div>
 

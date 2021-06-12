@@ -1,6 +1,7 @@
- <div class= "continer mx-auto">
+ <div class= "continer">
   <div class="row">
-  <div class="col-3">
+   <div class="col-4">
+   <table class="table table-hover table-inverse">
     <ul>
     <% @tag_lists.each do |list| %>
       <li>
@@ -10,23 +11,31 @@
       </li>
     <% end %>
     </ul>
-   </div>
+    </table>
+    </div>
 
- <div class="col-9">
-  <h4>タグが<%= @tag.tag_name %>の投稿一覧</h4>
-   <table>
+ <div class="col-8">
+  <h4>タグが"<%= @tag.tag_name %>"の投稿一覧</h4>
+   <table class="table table-hover table-inverse table-sm">
     <tr>
+     <th>ユーザ</th>
      <th>タイトル</th>
      <th></th>
     </tr>
    <% @posts.each do |post| %>
    <tr>
     <td>
+     <%= attachment_image_tag post.user,:profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
+     <%= link_to user_path(post.user) do %>
+     <%= post.user.owner_name %>
+     <% end %>
+    </td>
+    <td>
      <%= link_to post_path(post.id) do %>
      <%= post.title %>
      <% end %>
     </td>
-    <td><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+    <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
    </tr>
   </table>
   <% end %>

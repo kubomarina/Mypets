@@ -1,9 +1,11 @@
+<div class= "continer">
+  <div class="col-6 mx-auto">
 <h4>検索結果<h4>
-<table>
+<table class="table table-hover table-inverse">
 　<% @pets.each do |pet| %>
    <tr>
     <td>
-     <%= link_to pet_path(pet.id) do %>
+     <%= link_to admin_pet_path(pet.id) do %>
      <%= attachment_image_tag pet, :pet_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
      <% end %>
     <td>
@@ -11,3 +13,5 @@
    </tr>
   <% end %>
 </table>
+</div>
+</div>

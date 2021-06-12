@@ -1,9 +1,11 @@
-<h4>ユーザ一覧</h4>
+<div class="container">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+   <h4>ユーザ一覧</h4>
 <%= form_with url: search_admin_users_path, local: true, method: :get do |form| %>
     <%= form.text_field :keyword %>
-    <%= form.submit "検索" %>
+    <button class="btn btn-secondary", tape="submit">検索</button>
   <% end %>
-<table>
+<table class="table table-hover table-inverse table-sm">
  <tr>
   <th>ユーザ名</th>
   <th></th>
@@ -13,9 +15,12 @@
  <% @users. each do |user| %>
  <tr>
   <td><%= user.owner_name %></td>
-  <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+  <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
   <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
   <td><%= link_to "→", admin_user_path(user) %></td>
  </tr>
  <% end %>
 </table>
+</div>
+</div>
+</div>

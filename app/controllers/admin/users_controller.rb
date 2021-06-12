@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
-  before_action :user
+
+
   def index
     @users = User.page(params[:page]).order(id:"ASC")
   end

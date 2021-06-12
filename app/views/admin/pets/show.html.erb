@@ -1,9 +1,12 @@
+<div class= "continer">
+  <div class="col-6 mx-auto">
+
 <h4>みんなのペット図鑑</h4>
 <h5>詳細ページ</h5>
 
-<table>
+<table class="table table-hover table-inverse table-sm">
  <tr>
-  <th><%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+  <th><%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
  </tr>
  <tr>
   <td><%= @pet.Animal_name %></td>
@@ -39,7 +42,8 @@
   <td><%= @pet.tool %></td>
  </tr>
  </table>
- 
+</div>
+</div>
 
 
 

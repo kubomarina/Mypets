@@ -1,3 +1,6 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h4>投稿詳細</h4>
 <table>
  <tr>
@@ -15,42 +18,30 @@
 <table>
  <tr>
   <td>
+   ユーザ：
    <%= link_to admin_user_path(@post.user) do %>
    <%= @post.user.owner_name %>
    <% end %>
   </td>
-  <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+ </tr>
+ <tr>
+  <td>
+   投稿日：
+   <%= @post.created_at.strftime('%Y/%m/%d') %>
+   </td>
+  </tr>
  <tr>
 </table>
 
 <div>
 <p>コメント<%= @post.comments.count %>件</p>
 <% @post.comments.each do |comment| %>
-<%= comment.user.owner_name %>
+<%= comment.admin.owner_name %>
 <%= comment.created_at .strftime('%Y/%m/%d') %>
 <%= comment.comment %>
 <% end %>
 </div>
 
-<div>
-<%= form_with(model:[@post,@comment], local: true) do |f| %>
-<%= f.text_area :comment, rows:'5', placeholder: "コメント" %>
-<%= f.submit "投稿" %>
-<% end %>
-</div>
-
-<div>
- <% if @post.favorited_by?(current_admin) %>
- <p>
-  <%= link_to post_favorites_path(@post), method: :delete do %>
-  ★　<%= @post.favorites.count %> いいね
-  <% end %>
- </p>
- <% else %>
- <p>
-  <%= link_to post_favorites_path(@post), method: :post do %>
-  ★ <%= @post.favorites.count %> いいね
-  <% end %>
-  </p>
-  <% end %>
+ </div>
+ </div>
  </div>

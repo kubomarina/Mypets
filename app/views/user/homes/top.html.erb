@@ -1,5 +1,4 @@
 <div class="container">
- <div class="row">
   <h3>みんなの投稿</h3>
 
   <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
@@ -21,9 +20,9 @@
      <th>タイトル</th>
      <th>画像</th>
      <th>ユーザー名</th>
-     <th>タグ</th>
      <th>コメント</th>
      <th>いいね</th>
+     <th>投稿日</th>
      <th></th>
     </tr>
     <% @posts.each do |post| %>
@@ -33,14 +32,29 @@
       <%= post.title %>
       <% end %>
      </td>
-     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
-     <td><%= post.user.owner_name %></td>
-     <td><%#= post.tag.tag_name %></td>
-     <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
      <td>
-      <%= "★#{post.favorites.count}" %>
+      <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg' %>
+      <% if post.video.attached? %>
+       <video src="<%= rails_blob_path(post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+      <% end %>
+     </td>
+     <td>
+      <%= link_to user_path(post.user) do %>
+      <%= attachment_image_tag post.user, :profile_image, 70,70, format: 'jpeg',fallback: "no_image.jpg", size: '70x70' %><br>
+      <% end %>
+      <%= post.user.owner_name %>
+     </td>
+     <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
+     <td><%= "★#{post.favorites.count}" %></td>
+     <td>
+      <%= post.created_at.strftime('%Y/%m/%d') %>
+     </td>
       <% if post.user == current_user %>
-     <td><%= link_to "削除", post_path(post), method: :delete %></td>
+     <td>
+      <%= link_to post_path(post), method: :delete do %>
+      <button class="btn btn-danger">削除</button>
+      <% end %>
+      </td>
      <% end %>
     <% end %>
    </table>
