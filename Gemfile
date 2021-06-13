@@ -73,3 +73,8 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
