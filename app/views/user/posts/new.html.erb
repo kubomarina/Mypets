@@ -1,27 +1,30 @@
-<h3>投稿フォーム</h3>
-<%= form_with(model:[@tag,@post], local: true) do |f| %>
-<table>
- <tr>
-  <th>タイトル</th>
-  <td><%= f.text_field :title %></td>
- </tr>
- <tr>
-  <th>画像</th>
-  <td><%= f.attachment_field :image %></td>
- </tr>
- <tr>
-  <th>動画はこちら</th>
-  <td><%= f.file_field :video %><td>
- </tr>
- <tr>
-  <th>ひとこと</th>
-  <td><%= f.text_field :body %></td>
- </tr>
- <tr>
-  <th>タグ</th>
-  <td><%= f.text_field :tag_name %></td>
- </tr>
-</table>
-<button class="btn btn-success", type="submit">投稿する</button>
-
+<div class= "continer">
+ <div class="col-6 mx-auto">
+  <h3>投稿フォーム</h3>
+  <%= form_with(model:[@tag,@post], local: true) do |f| %>
+  <table>
+   <tr>
+    <th>タイトル</th>
+    <td><%= f.text_field :title %></td>
+   </tr>
+   <tr>
+    <th>画像</th>
+    <td><%= f.attachment_field :image %></td>
+   </tr>
+   <tr>
+    <th>動画はこちら</th>
+    <td><%= f.file_field :video %><td>
+   </tr>
+   <tr>
+    <th>ひとこと</th>
+    <td><%= f.text_field :body %></td>
+   </tr>
+   <tr>
+    <th>タグ</th>
+    <td><%= f.text_field :tag_name %></td>
+   </tr>
+  </table>
+ <button class="btn btn-success", type="submit">投稿する</button>
 <% end %>
+</div>
+</div>

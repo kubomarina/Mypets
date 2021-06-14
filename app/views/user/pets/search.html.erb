@@ -3,13 +3,13 @@
 <table>
      <tr>
       <th></th>
-      <th>ユーザ</th>
+      <th>検索結果</th>
      </tr>
       <% @pets.each do |pet| %>
      <tr>
       <td>
         <%= link_to pet_path(pet.id) do %>
-        <%= attachment_image_tag pet, :pet_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
+        <%= attachment_image_tag pet, :pet_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpeg", size: "200x150" %>
         <% end %>
       <td>
       <td><%= pet.Animal_name %></td>

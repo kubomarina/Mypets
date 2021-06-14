@@ -1,36 +1,35 @@
  <div class= "continer">
   <div class="col-6 mx-auto">
 
-<h4>みんなのペット図鑑</h4>
-<%= form_with model:@pet, local:true do |f| %>
-<%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-<%= f.attachment_field :pet_image %>
-<table class="table table-hover table-inverse">
- <tr>
-  <th>ペットの種類</th>
-  <td><%= f.text_field :introduction, class:"w-100", autofocus: true, id:"inputIntroduction" %></td>
- </tr>
- <tr>
-  <th>主食・おやつ</th>
-  <td><%= f.text_field :food, class:"w-100",  autofocus: true, id:"inputFood" %></td>
- </tr>
- <tr>
-  <th>習性・すきなこと</th>
-  <td><%= f.text_area :hobby, class:"w-100",  autofocus: true, id:"inputHobby" %></td>
- </tr>
- <tr>
-  <th>おすすめの飼育用品</th>
-  <td><%= f.text_field :tool, class:"w-100",  autofocus: true, id:"inputTool" %></td>
- </tr>
- <tr>
-  <th>飼育で大変なこと</th>
-  <td><%= f.text_area :caution, class:"w-100",  autofocus: true, id:"inputCaution"  %></td>
- </tr>
-<table>
+   <h4>みんなのペット図鑑</h4>
+   <%= form_with model:@pet, local:true do |f| %>
+   <%= attachment_image_tag @pet, :pet_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
+   <%= f.attachment_field :pet_image %>
+   <table class="table table-hover table-inverse">
+    <tr>
+     <th>ペットの種類</th>
+     <td><%= f.text_field :introduction, class:"w-100", autofocus: true, id:"inputIntroduction" %></td>
+    </tr>
+    <tr>
+     <th>主食・おやつ</th>
+     <td><%= f.text_field :food, class:"w-100",  autofocus: true, id:"inputFood" %></td>
+    </tr>
+    <tr>
+     <th>習性・すきなこと</th>
+     <td><%= f.text_area :hobby, class:"w-100",  autofocus: true, id:"inputHobby" %></td>
+    </tr>
+    <tr>
+     <th>おすすめの飼育用品</th>
+     <td><%= f.text_field :tool, class:"w-100",  autofocus: true, id:"inputTool" %></td>
+    </tr>
+    <tr>
+     <th>飼育で大変なこと</th>
+     <td><%= f.text_area :caution, class:"w-100",  autofocus: true, id:"inputCaution"  %></td>
+    </tr>
+   <table>
 
-<button class="btn btn-outline-success", tape="submit">変更を保存する</button>
-<% end %>
-
-</div>
-</div>
+   <button class="btn btn-outline-success", tape="submit">変更を保存する</button>
+   <% end %>
+  </div>
+ </div>
 
