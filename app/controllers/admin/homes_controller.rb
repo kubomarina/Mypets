@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
+
   def top
     @posts = Post.page(params[:page]).reverse_order
      @tag_lists = Tag.all
