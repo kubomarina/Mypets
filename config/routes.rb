@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
   get "admin" => 'admin/homes#top'
+  get 'admin_ranking' => "admin/posts#ranking"
   namespace :admin do
   resources :users, only:[:index, :show] do
     collection do

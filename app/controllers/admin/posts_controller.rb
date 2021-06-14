@@ -20,6 +20,11 @@ class Admin::PostsController < ApplicationController
     end
   end
 
+  def ranking
+    @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @page = 10
+  end
+
   layout 'admin'
 
   private
