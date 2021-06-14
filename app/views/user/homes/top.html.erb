@@ -1,12 +1,6 @@
 <div class="container">
   <h3>みんなの投稿</h3>
-
-  <%= form_with url: search_posts_path, local: true, method: :get do |form| %>
-    <%= form.text_field :keyword %>
-    <%=form.submit "検索" %>
-  <% end %>
-  <div>
-  <h4>タグ一覧</h4>
+  <h4>タグ一覧:</h4>
   <% @tag_lists.each do |list| %>
   <%= link_to search_posts_path(tag_id: list.id) do %>
   <%= list.tag_name %>
