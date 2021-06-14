@@ -35,10 +35,15 @@
      <%= post.title %>
      <% end %>
     </td>
-    <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+    <td>
+     <%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+   　<% if @post.video.attached? %>
+      <video src="<%= rails_blob_path(@post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+     <% end %>
+    </td>
    </tr>
+   <% end %>
   </table>
-  <% end %>
   </div>
   </div>
   </div>
