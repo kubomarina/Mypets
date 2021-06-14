@@ -37,7 +37,7 @@
  <% @posts.each do |post| %>
  <tr>
   <td>
-   <%= attachment_image_tag post, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+   <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg' %>
    <% if post.video.attached? %>
    <video src="<%= rails_blob_path(post.video) %>"width="200" height="150"type="video/mp4" controls></video>
    <% end %>
