@@ -33,7 +33,7 @@
       </td>
      <td>
       <%= post.user.owner_name %>
-      <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size: '70x70' %>
+      <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %>
      </td>
      <td><%= link_to "コメント#{post.comments.count}件", admin_post_path(post.id) %></td>
      <td>
