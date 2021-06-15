@@ -5,7 +5,7 @@
 
 <table class="table table-hover table-inverse table-sm">
  <tr>
-  <th><%= attachment_image_tag @pet, :pet_image, :fill, 200, 150, format: 'jpeg' %></td>
+  <th><%= attachment_image_tag @pet, :pet_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
  </tr>
  <tr>
   <th>名前</th>
