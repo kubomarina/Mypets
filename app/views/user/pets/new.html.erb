@@ -3,28 +3,28 @@
   <h4>みんなのペット図鑑</h4>
   <h5>投稿ページ</h5>
   <%= form_with model:@pet, local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :pet_image %>
+   <h4>画像</h4>
+   <%= f.attachment_field :pet_image %>
 
-  <h4>ペットの種類(犬・ハムスター等)</h4>
-  <%= f.text_field :Animal_name %>
+   <h4>ペットの種類(犬・ハムスター等)</h4>
+   <%= f.text_field :Animal_name %>
 
-  <h4>どんな動物？</h4>
-  <%= f.text_field :introduction %>
+   <h4>どんな動物？</h4>
+   <%= f.text_field :introduction %>
 
-  <h4>主食・おやつ</h4>
-  <%= f.text_field :food %>
+   <h4>主食・おやつ</h4>
+   <%= f.text_field :food %>
 
-  <h4>おすすめの飼育用具(おもちゃ・ケージ等)</h4>
-  <%= f.text_field :tool %>
+   <h4>おすすめの飼育用具(おもちゃ・ケージ等)</h4>
+   <%= f.text_field :tool %>
 
-  <h4>習性・すきなこと</h4>
-  <%= f.text_field :hobby %>
+   <h4>習性・すきなこと</h4>
+   <%= f.text_field :hobby %>
 
-  <h4>飼育で大変なこと</h4>
-  <%= f.text_field :caution %>
+   <h4>飼育で大変なこと</h4>
+   <%= f.text_field :caution %>
 
-  <%= f.submit "新規投稿" %>
+   <%= f.submit "新規投稿" %>
   <% end %>
  </div>
 </div>

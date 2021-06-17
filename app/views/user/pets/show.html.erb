@@ -1,54 +1,53 @@
 <div class= "continer">
-  <div class="col-6 mx-auto">
+ <div class="col-6 mx-auto">
 
-<h4>みんなのペット図鑑</h4>
+  <h4>みんなのペット図鑑</h4>
 
-<table class="table table-hover table-inverse table-sm">
- <tr>
-  <th><%= attachment_image_tag @pet, :pet_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
- </tr>
- <tr>
-  <th>名前</th>
-  </tr>
-  <tr>
-  <td><%= @pet.Animal_name %></td>
- </tr>
- <tr>
-  <th>どんな動物？</th>
- </tr>
- <tr>
-  <td><%= @pet.introduction %></td>
- </tr>
- <tr>
-  <th>主食・おやつ</th>
- </tr>
- <tr>
-  <td><%= @pet.food %></td>
- </tr>
- <tr>
-  <th>習性・すきなこと</th>
- </tr>
- <tr>
-  <td><%= @pet.hobby %></td>
- </tr>
- <tr>
-  <th>飼育上大変なこと</th>
- </tr>
- <tr>
-  <td><%= @pet.caution %></td>
- </tr>
- <tr>
-  <th>おすすめの飼育道具</th>
- </tr>
- <tr>
-  <td><%= @pet.tool %></td>
- </tr>
- </table>
-
+  <table class="table table-hover table-inverse table-sm">
+   <tr>
+    <th><%= attachment_image_tag @pet, :pet_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %></td>
+   </tr>
+   <tr>
+    <th>名前</th>
+    </tr>
+   <tr>
+    <td><%= @pet.Animal_name %></td>
+   </tr>
+   <tr>
+    <th>どんな動物？</th>
+   </tr>
+   <tr>
+    <td><%= @pet.introduction %></td>
+   </tr>
+   <tr>
+    <th>主食・おやつ</th>
+   </tr>
+   <tr>
+    <td><%= @pet.food %></td>
+   </tr>
+   <tr>
+    <th>習性・すきなこと</th>
+   </tr>
+   <tr>
+    <td><%= @pet.hobby %></td>
+   </tr>
+   <tr>
+    <th>飼育上大変なこと</th>
+   </tr>
+   <tr>
+    <td><%= @pet.caution %></td>
+   </tr>
+   <tr>
+    <th>おすすめの飼育道具</th>
+   </tr>
+   <tr>
+    <td><%= @pet.tool %></td>
+   </tr>
+  </table>
  <div>
- <%= link_to edit_pet_path(@pet) do %>
- <button class="btn btn-primary">編集する</button>
- <% end %>
+  <%= link_to edit_pet_path(@pet) do %>
+  <button class="btn btn-primary">編集する</button>
+  <% end %>
  </div>
 </div>
 </div>

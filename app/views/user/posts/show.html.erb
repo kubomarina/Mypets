@@ -1,87 +1,84 @@
 <div class="container">
  <div class="row">
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-<h4>投稿詳細</h4>
-<table>
- <tr>
-  <th>タイトル</th>
-  <td><%= @post.title %></td>
- </tr>
- <tr>
-  <td><%= attachment_image_tag @post, :image, :fill, 200, 150, format: 'jpeg' %></td>
-  <td>
-     <% if @post.video.attached? %>
-       <video src="<%= rails_blob_path(@post.video) %>"width="200" height="150"type="video/mp4" controls></video>
-     <% end %>
-   </td>
- </tr>
- <tr>
-  <td><%= @post.body %></td>
- <tr>
-</table>
+   <h4>投稿詳細</h4>
+   <table>
+    <tr>
+     <th>タイトル</th>
+     <td><%= @post.title %></td>
+    </tr>
+    <tr>
+     <td><%= attachment_image_tag @post, :image, :fill, 200, 150, format: 'jpeg' %></td>
+     <td>
+      <% if @post.video.attached? %>
+      <video src="<%= rails_blob_path(@post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+      <% end %>
+     </td>
+    </tr>
+    <tr>
+     <td><%= @post.body %></td>
+    <tr>
+   </table>
 
-<table>
- <tr>
- <% @post_tags.each do |tag| %>
- <td>
- タグ：
- <%= link_to search_posts_path(tag_id: tag.id) do %>
- <%= tag.tag_name %>
- <% end %>
- <td>
-</tr>
-<% end %>
-</table>
+   <table>
+    <tr>
+    <% @post_tags.each do |tag| %>
+     <td>
+      タグ：
+      <%= link_to search_posts_path(tag_id: tag.id) do %>
+      <%= tag.tag_name %>
+      <% end %>
+     <td>
+    </tr>
+    <% end %>
+   </table>
 
 
-<table>
- <tr>
-  <td>
-   ユーザ：
-   <%= link_to user_path(@post.user) do %>
-   <%= @post.user.owner_name %>
+   <table>
+    <tr>
+     <td>
+      ユーザ：
+      <%= link_to user_path(@post.user) do %>
+      <%= @post.user.owner_name %>
+      <% end %>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      投稿日：
+      <%= @post.created_at.strftime('%Y/%m/%d') %>
+     </td>
+    </tr>
+   </table>
+   <div>
+    <p>コメント<%= @post.comments.count %>件</p>
+    <% @post.comments.each do |comment| %>
+    <%= comment.user.owner_name %>
+    <%= comment.created_at .strftime('%Y/%m/%d') %>
+    <%= comment.comment %>
+    <% end %>
+   </div>
+   <div>
+    <%= form_with(model:[@post,@comment], local: true) do |f| %>
+    <%= f.text_area :comment, class:"w-100", rows:'5', placeholder: "コメント" %>
+   </div>
+   <button class="btn btn-success", type="submit">投稿する</button>
    <% end %>
-  </td>
- </tr>
- <tr>
-  <td>
-   投稿日：
-   <%= @post.created_at.strftime('%Y/%m/%d') %>
-  </td>
- </tr>
-</table>
-<div>
-<p>コメント<%= @post.comments.count %>件</p>
-<% @post.comments.each do |comment| %>
-<%= comment.user.owner_name %>
-<%= comment.created_at .strftime('%Y/%m/%d') %>
-<%= comment.comment %>
-<% end %>
-</div>
-
-<div>
-<%= form_with(model:[@post,@comment], local: true) do |f| %>
-<%= f.text_area :comment, class:"w-100", rows:'5', placeholder: "コメント" %>
-</div>
-<button class="btn btn-success", type="submit">投稿する</button>
-<% end %>
-
-
-<div>
- <% if @post.favorited_by?(current_user) %>
- <p>
-  <%= link_to post_favorites_path(@post), method: :delete do %>
-  ★　<%= @post.favorites.count %> いいね
-  <% end %>
- </p>
- <% else %>
- <p>
-  <%= link_to post_favorites_path(@post), method: :post do %>
-  ★ <%= @post.favorites.count %> いいね
-  <% end %>
-  </p>
-  <% end %>
- </div>
- </div>
- </div>
+   <div>
+    <% if @post.favorited_by?(current_user) %>
+    <p>
+     <%= link_to post_favorites_path(@post), method: :delete do %>
+     ★　<%= @post.favorites.count %> いいね
+     <% end %>
+    </p>
+    <% else %>
+    <p>
+     <%= link_to post_favorites_path(@post), method: :post do %>
+     ★ <%= @post.favorites.count %> いいね
+     <% end %>
+     </p>
+     <% end %>
+    </div>
+   </div>
+  </div>
  </div>

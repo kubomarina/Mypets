@@ -1,57 +1,57 @@
 <div class ="container">
  <div class="row">
- <div class="col-md-4">
-<h4>マイページ</h4>
-<table class="table table-hover table-inverse">
- <tr>
-  <th>飼い主さん</th>
-  <td>
-   <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
-    <%= @user.owner_name %>
-  </td>
- </tr>
- <tr>
-  <th>ペット</th>
-  <td><%= @user.pet_kind %></td>
- </tr>
-  <th>自己紹介</th>
-  <td><%= @user.introduction %></td>
- </tr>
-</table>
-<% if @user.id == current_user.id %>
-<button class="btn btn-outline-primary">
- <%= link_to edit_user_path(@user.id) do %>
- <i>プロフィール編集</i>
- <% end %>
-</button>
-<% end %>
-</div>
+  <div class="col-md-4">
+   <h4>マイページ</h4>
+   <table class="table table-hover table-inverse">
+    <tr>
+     <th>飼い主さん</th>
+     <td>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
+      <%= @user.owner_name %>
+     </td>
+    </tr>
+    <tr>
+     <th>ペット</th>
+     <td><%= @user.pet_kind %></td>
+    </tr>
+     <th>自己紹介</th>
+     <td><%= @user.introduction %></td>
+    </tr>
+   </table>
+   <% if @user.id == current_user.id %>
+   <button class="btn btn-outline-primary">
+    <%= link_to edit_user_path(@user.id) do %>
+    <i>プロフィール編集</i>
+    <% end %>
+   </button>
+   <% end %>
+  </div>
 
-<div class="col-md-7 offset-md-1">
-<table class="table table-hover table-inverse">
- <tr>
-  <th></th>
-  <th>タイトル</th>
-  <th>ひとこと</th>
- </tr>
- <% @posts.each do |post| %>
- <tr>
-  <td>
-   <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg' %>
-   <% if post.video.attached? %>
-   <video src="<%= rails_blob_path(post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+  <div class="col-md-7 offset-md-1">
+   <table class="table table-hover table-inverse">
+    <tr>
+     <th></th>
+     <th>タイトル</th>
+     <th>ひとこと</th>
+    </tr>
+    <% @posts.each do |post| %>
+    <tr>
+    <td>
+     <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg' %>
+     <% if post.video.attached? %>
+     <video src="<%= rails_blob_path(post.video) %>"width="200" height="150"type="video/mp4" controls></video>
+     <% end %>
+    </td>
+    <td>
+     <%= link_to post_path(post) do %>
+     <%= post.title %>
+     <% end %>
+    </td>
+    <td><%= post.body %></td>
+   </tr>
    <% end %>
-  </td>
-  <td>
-   <%= link_to post_path(post) do %>
-   <%= post.title %>
-   <% end %>
-  </td>
-  <td><%= post.body %></td>
- </tr>
- <% end %>
-</table>
-</div>
-</div>
+   </table>
+  </div>
+ </div>
 </div>
 <%= paginate @posts %>

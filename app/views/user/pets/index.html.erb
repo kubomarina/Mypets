@@ -1,44 +1,44 @@
 <div class="container">
  <div class="row">
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-<h4>みんなのペット図鑑</h4>
-<div>
-<%= form_with url: search_pets_path, local: true, method: :get do |form| %>
+   <h4>みんなのペット図鑑</h4>
+   <div>
+    <%= form_with url: search_pets_path, local: true, method: :get do |form| %>
     <%= form.text_field :keyword %>
     <button class="btn btn-secondary", type="submit">検索</button>
-<% end %>
-</div>
+    <% end %>
+   </div>
 
-<div>
-<%= link_to new_pet_path do %>
-<button class="btn btn-primary">ペットを追加</button>
-<% end %>
-</div>
+   <div>
+    <%= link_to new_pet_path do %>
+    <button class="btn btn-primary">ペットを追加</button>
+    <% end %>
+   </div>
 
 
-<h5>投稿一覧</h5>
-<table class="table table-hover table-inverse table-sm">
- <tr>
-  <th></th>
-  <th>ペットの種類</th>
-  <th>最終更新日時</th>
-  <th></th>
- </tr>
- <% @pets.each do |pets| %>
- <tr>
-  <td><%= attachment_image_tag pets, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
-  <td>
-   <%= link_to pet_path(pets) do %>
-   <%= pets.Animal_name %>
-   <% end %>
-  </td>
-  <td><%= pets.updated_at.strftime('%Y/%m/%d') %></td>
-  <td></td>
- </tr>
- <% end %>
-</table>
+   <h5>投稿一覧</h5>
+   <table class="table table-hover table-inverse table-sm">
+    <tr>
+     <th></th>
+     <th>ペットの種類</th>
+     <th>最終更新日時</th>
+     <th></th>
+    </tr>
+    <% @pets.each do |pets| %>
+    <tr>
+     <td><%= attachment_image_tag pets, :pet_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
+     <td>
+      <%= link_to pet_path(pets) do %>
+      <%= pets.Animal_name %>
+      <% end %>
+     </td>
+     <td><%= pets.updated_at.strftime('%Y/%m/%d') %></td>
+     <td></td>
+    </tr>
+    <% end %>
+   </table>
+  </div>
+ </div> 
 </div>
-</div>
-</div>
-
+ 
 

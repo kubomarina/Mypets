@@ -1,24 +1,23 @@
  <div class= "continer">
   <div class="row">
    <div class="col-4">
-   <table class="table table-hover table-inverse">
-<h3>検索結果 "<%= @keyword %>"</h3>
-    <table>
-     <tr>
-      <th></th>
-      <th>ユーザ</th>
-     </tr>
+    <h3>検索結果 "<%= @keyword %>"</h3>
+     <table class="table table-hover table-inverse"> 
+      <tr>
+       <th></th>
+       <th>ユーザ</th>
+      </tr>
       <% @users.each do |user| %>
-     <tr>
-      <td>
+      <tr>
+       <td>
         <%= link_to user_path(user.id) do %>
         <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
         <% end %>
-      <td>
-      <td><%= user.owner_name %></td>
-     </tr>
-    <% end %>
-   </table>
+       <td>
+       <td><%= user.owner_name %></td>
+      </tr>
+      <% end %>
+     </table>
+    </div>
    </div>
-   </div>
-   </div>
+  </div>

@@ -1,40 +1,40 @@
 <div class="container">
  <div class="row">
-   <table class="table table-hover table-inverse table-sm">
-    <tr>
-     <th>タイトル</th>
-     <th>画像</th>
-     <th>ユーザ</th>
-     <th>コメント</th>
-     <th>いいね</th>
-     <th></th>
-    </tr>
-    <% @posts.each do |post| %>
-    <tr>
-     <td>
-      <%= link_to post_path(post) do %>
-      <%= post.title %>
-      <% end %>
-     </td>
-     <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size:'70x70' %></td>
-     <td>
-      <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size:'70x70' %><br>
-      <%= post.user.owner_name %>
-     </td>
-     <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
-     <td>
-      <%= "★#{post.favorites.count}" %>
-      <% if post.user == current_user %>
-     <td>
-      <%= link_to post_path(post), method: :delete do %>
-      <button class="btn btn-danger">削除</button>
-      <% end %>
-     </td>
+  <table class="table table-hover table-inverse table-sm">
+   <tr>
+    <th>タイトル</th>
+    <th>画像</th>
+    <th>ユーザ</th>
+    <th>コメント</th>
+    <th>いいね</th>
+    <th></th>
+   </tr>
+   <% @posts.each do |post| %>
+   <tr>
+    <td>
+     <%= link_to post_path(post) do %>      
+     <%= post.title %>
      <% end %>
+    </td>
+    <td><%= attachment_image_tag post, :image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size:'70x70' %></td>
+    <td>
+     <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size:'70x70' %><br>
+     <%= post.user.owner_name %>
+    </td>
+    <td><%= link_to "コメント#{post.comments.count}件", post_path(post.id) %></td>
+    <td>
+     <%= "★#{post.favorites.count}" %>
+     <% if post.user == current_user %>
+    <td>
+     <%= link_to post_path(post), method: :delete do %>
+     <button class="btn btn-danger">削除</button>
+     <% end %>
+    </td>
     <% end %>
-   </table>
-  </div>
+   </tr>
+  <% end %>
+ </table>
  </div>
  </div>
- </div>
+
 

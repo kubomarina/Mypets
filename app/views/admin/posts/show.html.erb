@@ -1,47 +1,47 @@
 <div class="container">
  <div class="row">
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-<h4>投稿詳細</h4>
-<table>
- <tr>
-  <th>タイトル</th>
-  <td><%= @post.title %></td>
- </tr>
- <tr>
-  <td><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
- </tr>
- <tr>
-  <td><%= @post.body %></td>
- </tr>
-</table>
+   <h4>投稿詳細</h4>
+   <table>
+    <tr>
+     <th>タイトル</th>
+     <td><%= @post.title %></td>
+    </tr>
+    <tr>
+     <td><%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+    </tr>
+    <tr>
+     <td><%= @post.body %></td>
+    </tr>
+   </table>
 
-<table>
- <tr>
-  <td>
-   ユーザ：
-   <%= link_to admin_user_path(@post.user) do %>
-   <%= @post.user.owner_name %>
-   <% end %>
-  </td>
- </tr>
- <tr>
-  <td>
-   投稿日：
-   <%= @post.created_at.strftime('%Y/%m/%d') %>
-   </td>
-  </tr>
- <tr>
-</table>
+   <table>
+    <tr>
+     <td>
+      ユーザ：
+      <%= link_to admin_user_path(@post.user) do %>
+      <%= @post.user.owner_name %>
+      <% end %>
+     </td>
+    </tr>
+    <tr>
+     <td>
+   　　投稿投稿日：
+   　　<%= @post.created_at.strftime('%Y/%m/%d') %>
+   　</td>
+  　</tr>
+ 　　<tr>
+   </table>
 
-<div>
-<p>コメント<%= @post.comments.count %>件</p>
-<% @post.comments.each do |comment| %>
-<%= comment.user.owner_name %>
-<%= comment.created_at .strftime('%Y/%m/%d') %>
-<%= comment.comment %>
-<% end %>
+   <div>
+    <p>コメント<%= @post.comments.count %>件</p>
+    <% @post.comments.each do |comment| %>
+    <%= comment.user.owner_name %>
+    <%= comment.created_at .strftime('%Y/%m/%d') %>
+    <%= comment.comment %>
+    <% end %>
+   </div>
+
+  </div>
+ </div>
 </div>
-
- </div>
- </div>
- </div>

@@ -1,24 +1,23 @@
  <div class= "continer">
   <div class="row">
    <div class="col-4 mx-auto">
-
-<h2>検索結果 "<%= @keyword %>"</h2>
- <table class="table table-hover table-inverse">
-     <tr>
-      <th></th>
-      <th>ユーザ</th>
-     </tr>
-      <% @users.each do |user| %>
-     <tr>
-      <td>
-        <%= link_to admin_user_path(user.id) do %>
-        <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
-        <% end %>
-      <td>
-      <td><%= user.owner_name %></td>
-     </tr>
+   <h2>検索結果 "<%= @keyword %>"</h2>
+   <table class="table table-hover table-inverse">
+    <tr>
+     <th></th>
+     <th>ユーザ</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+     <td>
+      <%= link_to admin_user_path(user.id) do %>
+      <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpeg" %>
+      <% end %>
+     <td>
+     <td><%= user.owner_name %></td>
+    </tr>
     <% end %>
    </table>
-   </div>
-   </div>
-   </div>
+  </div>
+ </div>
+</div>
