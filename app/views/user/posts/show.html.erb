@@ -61,8 +61,8 @@
    <div>
     <%= form_with(model:[@post,@comment], local: true) do |f| %>
     <%= f.text_area :comment, class:"w-100", rows:'5', placeholder: "コメント" %>
+    <button class="btn btn-success", type="submit">投稿する</button>
    </div>
-   <button class="btn btn-success", type="submit">投稿する</button>
    <% end %>
    <div>
     <% if @post.favorited_by?(current_user) %>

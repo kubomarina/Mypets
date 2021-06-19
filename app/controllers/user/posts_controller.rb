@@ -13,9 +13,9 @@ class User::PostsController < ApplicationController
        @post.save_posts(tag_list)
        redirect_to root_path
     else
-      redirect_to root_path
+      render :new
+    end
   end
-end
 
   def show
     @post = Post.find(params[:id])
@@ -27,7 +27,7 @@ end
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
-end
+  end
 
   def search
     @tag_lists = Tag.all
